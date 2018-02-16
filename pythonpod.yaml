@@ -8,7 +8,7 @@ spec:
     persistentVolumeClaim:
      claimName: basic
  containers:
-  - name: pythoncontainer
+  - name: pythonpod
     image: serged/python
     ports:
     volumeMounts:
