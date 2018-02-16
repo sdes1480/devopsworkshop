@@ -9,9 +9,9 @@ spec:
      claimName: basic
  containers:
   - name: pythonpod
-    image: serged/python
-    ports:
+    image: serged/mypython
+    command: ["/bin/sh","-c"]
+    args: ["ping localhost"]
     volumeMounts:
     - name: task-pv-storage
       mountPath: "/output"
-        
