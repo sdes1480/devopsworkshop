@@ -1,18 +1,16 @@
 kind: Pod
 apiVersion: v1
 metadata:
- name: task-pv-pod
+ name: pythonpod
 spec:
  volumes:
   - name: task-pv-storage
     persistentVolumeClaim:
      claimName: basic
  containers:
-  - name: task-pv-container
-    image: nginx
+  - name: pythoncontainer
+    image: serged/python
     ports:
-    - containerPort: 80
-      name: "http-server"
     volumeMounts:
     - name: task-pv-storage
       mountPath: "/output"
