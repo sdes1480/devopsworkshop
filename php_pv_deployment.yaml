@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+ name: test-php
+ labels:
+   app: php
+spec:
+ replicas: 2
+ template:
+   metadata:
+     labels:
+       app: test-php
+       tier: frontend
+   spec:
+     containers:
+     - image: php:5.5-apache
+       name: test-php
+       ports:
+       - containerPort: 80
+       volumeMounts:
+       - name: task-pv-storage
+         mountPath: "/var/www/html"
+
+     volumes:
+     - name: task-pv-storage
+       persistentVolumeClaim:
+         claimName: basic1
